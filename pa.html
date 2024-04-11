@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progressão Aritmética</title>
+
+    <style>
+        body {
+            background-color: rgb(58, 114, 179);
+            font: normal 15pt Arial;
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        #caixaPrincipal {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 3px 3px 10px black;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        #caixaExplicativa{
+            padding-top: 100px;
+            margin: auto;
+            width: 750px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #botao{
+            align-content: center;
+            width: 75px;
+            height: 25px;
+        }
+        #divRes{
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+        }
+        footer {
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Progressão Aritmética</h1>
+    </header>
+
+    <section id="caixaPrincipal">
+        <div>
+            <p>Digite qual o primeiro Termo: 
+                <input id="primeiroTermo" type="number">
+                Digite a razão da PA: 
+                <input id="razao" type="number">
+                <br>Digite qual o enésimo Termo: 
+                <input id="enesimo" type="number">
+                <button type="submit" id="botao" onclick="calcular()">Calcular</button>
+            </p>
+            
+        </div>
+        <div id="divRes">
+            <p>Valores: <p id="res"></p></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Oliveira Riquelme</p>
+    </footer>
+
+    <script>
+        let primeiro = document.getElementById("primeiroTermo");
+        let razao = document.getElementById("razao");
+        let n = document.getElementById("enesimo");
+        let res = document.getElementById("res");
+        function calcular(){
+            if(Number(primeiro.value) == 0 || Number(razao.value) == 0|| Number(n.value) == 0){
+                window.alert("Insira números válidos!");
+                return;
+            }
+            pa(Number(primeiro.value), Number(razao.value), Number(n.value));
+        }
+        function pa(n1, razao, enesimoTermo){
+            res.innerHTML = `${n1}`;
+            for(let i=0; i<enesimoTermo-1; i++){
+                res.innerHTML += `-> ${n1+razao}`;
+                n1 += razao;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Idade</title>
+
+    <style>
+        body {
+            background-color: rgb(58, 114, 179);
+            font: normal 15pt Arial;
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            gap: 5px;
+            box-shadow: 3px 3px 10px black;
+        }
+
+        footer {
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+        #foto{
+            width: 250px;
+            height: 250px;
+            border-radius: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Verificador de Idade</h1>
+    </header>
+
+    <section id="caixaPrincipal">
+        <div>
+            <p>Ano de Nascimento:
+                <input type="number" id="ano">
+            </p>
+            <p>Sexo:
+                <input type="radio" name="radsex" id="mas" checked>
+                <label for="mas">Masculino</label>
+                <input type="radio" name="radsex" id="fem">
+                <label for="fem">Feminino</label>
+            </p>
+            <p>
+                <input type="button" value="Verificar" onclick="verificar()">
+            </p>
+        </div>
+        <div id="res">
+            Preencha os dados acima para ver o resultado!
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Oliveira Riquelme</p>
+    </footer>
+
+    <script>
+        let anoAtual = new Date().getFullYear();//Pegando o ano
+        let anoUsuario = document.querySelector("input#ano");
+        let resposta = document.querySelector("div#res");
+        let sexo = document.getElementsByName("radsex");
+
+        let genero;
+        function verificar() {
+            if (anoUsuario.value.length == 0 || anoUsuario.value > anoAtual) {
+                window.alert("Verfique os dados novamente.");
+            }
+            let img = document.createElement("img");
+            img.id = "foto";
+            let idade = anoAtual - Number(anoUsuario.value);
+            if (sexo[0].checked) {
+                genero = "Homem";
+                if (idade >= 0 && idade < 10){
+                    img.src = "/imagens/crianca-h.jpg";
+                }else if (idade < 21) {
+                    img.src = "/imagens/jovem-h.avif";
+                } else if (idade < 50) {
+                    img.src = "/imagens/adulto-h.jpg";
+                } else {
+                    img.src = "/imagens/idoso-h.jpeg";
+                }
+            } else {
+                genero = "Feminino";
+                if (idade >= 0 && idade < 10) {
+                    img.src = "/imagens/crianca-f.jpg";
+                }else if (idade < 21) {
+                    img.src = "/imagens/jovem-f.jpg";
+                } else if (idade < 50) {
+                    img.src = "/imagens/adulto-f.webp";
+                } else {
+                    img.src = "/imagens/idoso-f.webp";
+                }
+            }
+            res.style.textAlign = "center";
+            resposta.innerHTML = `Detectamos ${genero} com ${idade} anos .`
+            resposta.appendChild(img);
+
+        }
+    </script>
+</body>
+
+</html>

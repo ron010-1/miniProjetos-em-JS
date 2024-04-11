@@ -1,11 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tempo</title>
+    
+    <style>
+        body{
+            background-color: rgb(58, 114, 179);
+            font: normal 15pt Arial;
+        }
+        header{
+            color: white;
+            text-align: center;
+        }
+        section{
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 3px 3px 10px black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        #imagem{
+            border-radius: 250px;
+            width: 250px;
+            height: 250px;
+        }
+        footer{
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Tempo do Dia</h1>
+    </header>
     
+    <section id="caixaPrincipal">
+        <div id="textoDiv">
+        </div id="imagensDiv">
+        <div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Oliveira Riquelme</p>
+    </footer>
+    
+    <script>
+        const d = new Date(); //Criando um objeto do Tipo Data.
+        let hora = d.getHours();//Pegando a Hora Atual do Sistema que ta rodando o programa.
+        let caixaPrincipal = document.querySelector("section#caixaPrincipal");
+        let textoDiv = document.querySelector("div#textoDiv");
+
+
+
+        //Laços Condicionais para cada hora do dia.
+        if(hora < 12){
+            manha();
+        }else if(hora >= 12 && hora < 18){
+            tarde();
+        }else{
+            noite();
+        }
+
+        function manha(){
+            let imagem = document.createElement("img");
+            textoDiv.innerHTML = `Agora são ${hora} horas.`
+            imagem.src = "/imagens/manha.jpg";
+            imagem.id = "imagem";
+            caixaPrincipal.appendChild(imagem);
+            document.body.style.background = " #f49e12";
+        }
+
+        function tarde(){
+            let imagem = document.createElement("img");
+            textoDiv.innerHTML = `Agora são ${hora} horas.`
+            imagem.src = "/imagens/tarde.jpg";
+            imagem.id = "imagem";
+            caixaPrincipal.appendChild(imagem);
+            document.body.style.background = "#ffa500";
+        }
+        function noite(){
+            let imagem = document.createElement("img");
+            textoDiv.innerHTML = `Agora são ${hora} horas.`
+            imagem.src = "/imagens/noite.jpg";
+            imagem.id = "imagem";
+            caixaPrincipal.appendChild(imagem);
+            document.body.style.background = "#191970";
+        }
+
+    </script>
 </body>
 </html>

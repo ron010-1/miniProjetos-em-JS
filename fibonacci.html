@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+
+    <style>
+        body {
+            background-color: rgb(58, 114, 179);
+            font: normal 15pt Arial;
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        #caixaPrincipal {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 3px 3px 10px black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        #caixaExplicativa{
+            padding-top: 100px;
+            margin: auto;
+            width: 750px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #botao{
+            align-content: center;
+            width: 75px;
+            height: 25px;
+        }
+        #divRes{
+            display: flex;
+            align-items: row;
+            gap: 8px;
+        }
+        footer {
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Enésimo Termo de Fibonacci</h1>
+    </header>
+
+    <section id="caixaPrincipal">
+        <div>
+            <p>Digite qual o enésimo termo: 
+                <input id="enesimo" type="number">
+                <button type="submit" id="botao" onclick="calcular()">Calcular</button>
+            </p>
+            
+        </div>
+        <div id="divRes">
+            <p>O enesimo termo é: <p id="res"></p></p>
+        </div>
+    </section>
+
+    <section id="caixaExplicativa">
+        <h2>O que é Fibonacci?</h2>
+        <p>A sequência de Fibonacci é um padrão numérico em que o primeiro e o segundo termo são iguais a 1 e cada termo a partir do terceiro é a soma dos dois termos anteriores.</p>
+        <img src="/imagens/fib.webp" alt="Fibonacci" style="border-radius: 10px;">
+        
+    </section>
+
+    <footer>
+        <p>&copy; Oliveira Riquelme</p>
+    </footer>
+
+    <script>
+        let n = document.getElementById("enesimo");
+        let res = document.getElementById("res");
+        let resultado;
+
+        //Chama função ao clicar no botão.
+        function calcular(){
+            if(n.value == 0){
+                window.alert("Digite um valor válido!");
+            }
+            resultado = fib(n.value);
+            res.innerHTML = `${resultado}`;
+        }
+        //Função Fibonacci Recursiva.
+        function fib(n){
+            if(n <= 1){
+                return n;
+            }return fib(n-2) + fib(n-1);
+        }
+    </script>
+</body>
+
+</html>
