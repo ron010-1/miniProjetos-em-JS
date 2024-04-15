@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teste</title>
+</head>
+
+<body>
+    <div id="newTask">
+        <textarea id="taskText" cols="30" rows="10"></textarea>
+        <button type="submit" onclick="adicionar()">Enviar</button>
+        <button type="submit" onclick="mostrarTask()">Carregar</button>
+    </div>
+
+    <div id="tasks">
+
+    </div>
+
+    <script>
+        //Inicializando lista das tasks.
+        let banco = [];
+        const divTasks = document.getElementById("tasks");
+
+        function adicionar() {
+            let texto = document.getElementById("taskText").value; //Pegando texto.
+            let p = document.createElement("p"); p.innerText = `${texto}`;
+            divTasks.appendChild(p); banco.push(texto);
+            localStorage.tasks = JSON.stringify(banco);//Armazena como banco sendo um array/lista, e cada "texto" sendo um índice da lista.
+        }
+
+        function mostrarTask() {
+            if (localStorage.tasks) {
+                banco = JSON.parse(localStorage.getItem('tasks'));
+                console.log("Passei daqui.");
+            }
+            for (let i in banco) {
+                let p = document.createElement("p"); p.innerText = `${banco[i]}`;
+                divTasks.appendChild(p);
+            }
+        }
+    </script>
+</body>
+
+</html>

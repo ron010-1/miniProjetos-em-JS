@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisa Array</title>
+    <style>
+        body {
+            background-color: rgb(58, 114, 179);
+            font: normal 15pt Arial;
+        }
+        header {
+            color: white;
+            text-align: center;
+        }
+        #caixaPrincipal {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 3px 3px 10px black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        #botao{
+            align-content: center;
+            width: 75px;
+            height: 25px;
+        }
+        #divRes{
+            display: flex;
+            align-items: row;
+            gap: 8px;
+        }
+        footer {
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h1>Analisador de Array</h1>
+    </header>
+
+    <section id="caixaPrincipal">
+        <div>
+            <p style="font-size: 18px;">Insira um número no array: 
+                <input type="number" id="numero">
+                <button type="submit" onclick="adicionar()">Adicionar</button>
+            </p>
+            <button type="submit" id="botao" onclick="analisar()">Finalizar</button>
+        </div>
+
+        <div>
+            <p>Informações do Vetor: <br><p id="res"></p></p>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; Oliveira Riquelme</p>
+    </footer>
+
+    <script>
+        let res = document.getElementById("res");
+        let arr = [];
+
+        function analisar(){
+            let maiorValor = maior();
+            let menorValor = menor();
+            let mediaValores = media();
+            let somaTotal = soma();
+            res.innerHTML = `Ao todo temos ${arr.length} valores<br> 
+            O maior valor informado é ${maiorValor}<br>
+            O menor valor informado é ${menorValor}<br>
+            A soma dos valores é ${somaTotal}<br>
+            A media dos valores é ${parseFloat(mediaValores.toFixed(4))}<br>
+            E esse é o nosso vetor: ${arr}.`;
+        }
+
+        function maior(){
+            return Math.max.apply(null, arr);
+        }
+        function menor(){
+            return Math.min.apply(null, arr);
+        }
+        function soma(){
+            let soma = 0;
+            for(let pos in arr){
+                soma += arr[pos];
+            } 
+            return soma;
+        }
+        function media(){
+            return (soma(arr)/arr.length);
+        }
+        function adicionar(){
+            let num = Number(document.getElementById("numero").value);
+            arr.push(num);
+            console.log(arr);
+        }
+
+    </script>
+</body>
+</html>

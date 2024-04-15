@@ -1,0 +1,60 @@
+body {
+    background-color: white;
+    font: normal 15pt Arial;
+}
+
+#caixa {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#tasks {
+    display: none;
+    background-color: white;
+    margin: auto;
+    box-shadow: 3px 3px 10px black;
+    border-radius: 10px;
+    width: 530px;
+    height: 60px;
+    background-color: gray;
+    flex-direction: row;
+}
+
+#newTask {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 500px;
+    height: 30px;
+    margin: auto;
+    box-shadow: 3px 3px 10px black;
+    gap: 5px;
+}
+
+#text {}
+
+#icones {
+    width: 22px;
+    height: 22px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+#taskText {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+header {
+    color: black;
+    text-align: center;
+}
+
+footer {
+    color: black;
+    font-style: italic;
+    text-align: center;
+}
