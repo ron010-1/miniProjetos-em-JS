@@ -15,11 +15,17 @@
         <h1>Lista de Tarefas</h1>
     </header>
 
-    <section id="caixa">
+    <section id="box">
+        <div id="question">
+            <p>Você deseja carregar as tarefas anteriores?</p>
+            <div><button type="submit" onclick="carregar()">Sim</button> <button type="submit" onclick="apagarBanco()">Não</button></div>
+        </div>
         <div id="newTask">
             <textarea id="text" cols="50" rows="1" placeholder="Digite a sua tarefa..."></textarea>
             <img src="/imagens/mais.png" id="icones" alt="mais" onclick="adicionar()">
-            <button type="submit" onclick="carregar()">Carregar</button>
+        </div>
+        <div id="allTasks">
+
         </div>
     </section>
 

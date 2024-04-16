@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teste</title>
+    <style>
+        #div{
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,7 +28,7 @@
         //Inicializando lista das tasks.
         let banco = [];
         const divTasks = document.getElementById("tasks");
-
+        
         function adicionar() {
             let texto = document.getElementById("taskText").value; //Pegando texto.
             let p = document.createElement("p"); p.innerText = `${texto}`;
@@ -31,14 +37,27 @@
         }
 
         function mostrarTask() {
-            if (localStorage.tasks) {
-                banco = JSON.parse(localStorage.getItem('tasks'));
-                console.log("Passei daqui.");
+            if (localStorage.tasks) {//Verifica se existe a chave task no LocalStorage.
+                banco = JSON.parse(localStorage.getItem('tasks')); //Se sim, vai na chave 'tasks', converte pra um OBjeto JSON e o armazena na variável banco que é uma lista.
             }
             for (let i in banco) {
-                let p = document.createElement("p"); p.innerText = `${banco[i]}`;
-                divTasks.appendChild(p);
+                adicionarPeloElemento(banco[i]);//Chama a função passando o valor do índice como parâmetro.
             }
+        }
+
+        function excluir() {
+            let divToRemove = this.parentNode;
+            // Removendo a div do DOM
+            divToRemove.remove();
+        }
+
+        function adicionarPeloElemento(elemento){
+            let div = document.createElement("div"); div.id = "div";
+            let button = document.createElement("button"); button.type = "input"; button.onclick = excluir; button.style = "width: 50px; height: 25px;"
+            let p = document.createElement("p"); p.innerText = `${elemento}`;
+
+            div.appendChild(p); div.appendChild(button);
+            divTasks.appendChild(div);
         }
     </script>
 </body>
