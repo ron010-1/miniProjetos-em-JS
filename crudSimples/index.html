@@ -1,27 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Clientes</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modalCadastro.css">
+    <link rel="stylesheet" href="modalEditar.css">
+    <script src="scripts.js"></script>
 </head>
+
 <body>
     <header>
-
+        <p style="color: white; padding-top: 8px; ">Cadastro de Clientes</p>
     </header>
 
     <section>
+        <button id="botaoCadastrar" onclick="cadastrarCliente()">Cadastrar Cliente</button>
+        <div id="caixa">
+            <div id="detalhes" style="display:flex; flex-direction: row; gap: 1px; justify-content: center;">
+                <p id="campos">Nome</p>
+                <p id="campos">E-mail</p>
+                <p id="campos">Celular</p>
+                <p id="campos">Cidade</p>
+                <p id="camposAcao">Ação</p>
+            </div>
+        </div>
 
+        <!--PRIMEIRA JANELA MODAL-->
+        <dialog id="modal">
+            <div id="modalHeader">
+                <p style="color: white; padding-top: 8px; ">Novo Cliente</p>
+            </div>
+            <div id="modalBody">
+                <input type="text" id="nome" placeholder="Nome do Cliente" required>
+                <input type="email" id="email" placeholder="Email do Cliente" required>
+                <input type="tel" id="numero" placeholder="Celular do Cliente" required>
+                <input type="text" id="cidade" placeholder="Cidade do Cliente" required>
+            </div>
+            <div id="modalFooter">
+                <button onclick="salvarCliente()"
+                    style="width: 50px; height: 25px; background-color: #15cc66; color: white; border-radius: 5px; border: white;">Salvar</button>
+                <button onclick="fecharCadastro()" id="cancelarModal"
+                    style="width: 70px; height: 25px; background-color: #1db5fe; color: white; border-radius: 5px; border: white;">Cancelar</button>
+            </div>
+        </dialog>
+
+        <dialog id="editar">
+            <div id="editarHeader">
+                <p id="textoEditar" style="color: white; padding-top: 8px; "></p>
+            </div>
+            <div id="editarBody">
+                <input type="text" id="nomeEditar" placeholder="Nome do Cliente" required>
+                <input type="email" id="emailEditar" placeholder="Email do Cliente" required>
+                <input type="tel" id="numeroEditar" placeholder="Celular do Cliente" required>
+                <input type="text" id="cidadeEditar" placeholder="Cidade do Cliente" required>
+            </div>
+            <div id="editarFooter">
+                <button onclick="alterarCliente()"
+                    style="width: 50px; height: 25px; background-color: #15cc66; color: white; border-radius: 5px; border: white;">Salvar</button>
+                <button onclick="editar.close()" id="cancelarModal"
+                    style="width: 70px; height: 25px; background-color: #1db5fe; color: white; border-radius: 5px; border: white;">Cancelar</button>
+            </div>
+        </dialog>
     </section>
 
     <footer>
-        Programado por Riquelme Oliveira.
     </footer>
-    <script>
 
-    </script>
 </body>
+
 </html>
