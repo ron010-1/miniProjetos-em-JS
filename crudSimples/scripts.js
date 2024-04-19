@@ -48,7 +48,7 @@ function salvarCliente() {
 
         //Salvando no meu objeto cliente
         let novoCliente = {
-            nome: (document.getElementById("nome").value).toUpperCase(),
+            nome: document.getElementById("nome").value.toUpperCase(),
             email: document.getElementById("email").value,
             numero: document.getElementById("numero").value,
             cidade: document.getElementById("cidade").value
@@ -57,7 +57,7 @@ function salvarCliente() {
         clienteData.clientes.push(novoCliente);
         salvarBanco(clienteData);
 
-        adicionarDashboard();
+        adicionarDashboard(novoCliente.nome, novoCliente.email, novoCliente.numero, novoCliente.cidade);
     }
 }
 
@@ -141,7 +141,7 @@ function excluirCadastro(element) {
 function adicionarDashboard(nome, email, numero, cidade) {
     if (nome == undefined || email == undefined || numero == undefined || cidade == undefined) {
         let elementos = pegarElementos();
-        nome = elementos[0].toUpperCase;
+        nome = elementos[0];
         email = elementos[1];
         numero = elementos[2];
         cidade = elementos[3];
