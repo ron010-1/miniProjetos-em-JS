@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="modalCadastro.css">
     <link rel="stylesheet" href="modalEditar.css">
-    <script src="scripts.js"></script>
+    <script src="/crudSimples/scripts.js"></script>
 </head>
 
 <body>
@@ -58,7 +58,7 @@
                 <input type="text" id="cidadeEditar" placeholder="Cidade do Cliente" required>
             </div>
             <div id="editarFooter">
-                <button onclick="alterarCliente()"
+                <button onclick="alterarCliente()" id="salvarEditar"
                     style="width: 50px; height: 25px; background-color: #15cc66; color: white; border-radius: 5px; border: white;">Salvar</button>
                 <button onclick="editar.close()" id="cancelarModal"
                     style="width: 70px; height: 25px; background-color: #1db5fe; color: white; border-radius: 5px; border: white;">Cancelar</button>

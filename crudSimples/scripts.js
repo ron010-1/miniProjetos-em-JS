@@ -74,6 +74,8 @@ function pegarElementos() {
     return [nome, email, numero, cidade];
 }
 
+let pNomeGlobal;
+
 function editarCadastro(element){
     //Pegando o modal
     let modalEditar = document.getElementById("editar");
@@ -85,12 +87,13 @@ function editarCadastro(element){
     let pNumero = element.querySelector("#numeroCliente").innerText;
     let pCidade = element.querySelector("#cidadeCliente").innerText;
 
+    pNomeGlobal = pNome;
+
     //Pegando os input
     let iptNome = document.getElementById("nomeEditar");
     let iptEmail = document.getElementById("emailEditar");
     let iptNumero = document.getElementById("numeroEditar");
     let iptCidade = document.getElementById("cidadeEditar");
-
     iptNome.value = pNome;
     iptEmail.value = pEmail;
     iptNumero.value = pNumero;
@@ -101,10 +104,24 @@ function editarCadastro(element){
 }
 
 function alterarCliente(){
-    let [nome, email, numero, cidade] = pegarElementos();
-    adicionarDashboard(nome, email, numero, cidade);
-    excluirCadastro(this.parentNode);
-    salvarBanco();
+    //PROBLEMA, Tô pegando o valor depois da troca mas antes? por que depois o dado foi alterado mas n está salvo no banco de dados.
+    let iptNome = document.getElementById("nomeEditar").value;
+    let iptEmail = document.getElementById("emailEditar").value;
+    let iptNumero = document.getElementById("numeroEditar").value;
+    let iptCidade = document.getElementById("cidadeEditar").value;
+
+    for (let pos in clienteData.clientes){
+        if(clienteData.clientes[pos].nome == pNomeGlobal){
+            clienteData.clientes[pos].nome = iptNome.toUpperCase();
+            clienteData.clientes[pos].email = iptEmail;
+            clienteData.clientes[pos].numero = iptNumero;
+            clienteData.clientes[pos].cidade = iptCidade;
+            salvarBanco();
+        }
+    }
+    window.location.reload();//Gambiarra pra atualizar o dashboard
+    let modalEditar = document.getElementById("editar");
+    modalEditar.close();
 }
 
 function excluirCadastro(element) {
@@ -124,7 +141,7 @@ function excluirCadastro(element) {
 function adicionarDashboard(nome, email, numero, cidade) {
     if (nome == undefined || email == undefined || numero == undefined || cidade == undefined) {
         let elementos = pegarElementos();
-        nome = elementos[0];
+        nome = elementos[0].toUpperCase;
         email = elementos[1];
         numero = elementos[2];
         cidade = elementos[3];
